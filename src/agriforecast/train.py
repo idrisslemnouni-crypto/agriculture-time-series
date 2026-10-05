@@ -19,6 +19,17 @@ from agriforecast.modeling import METHODS, fit, fold, metrics, predict, residual
 def run(root: Path):
     config = json.loads((root / "configs/default.json").read_text())
     data, evidence = read_sources(root)
+    coverage = (
+        data.assign(year=data.date.dt.year)
+        .groupby("year")
+        .agg(
+            calendar_days=("date", "size"),
+            observed_soil10_days=("SOIL_MOISTURE_10_DAILY", "count"),
+        )
+    )
+    coverage["observed_fraction"] = coverage.observed_soil10_days / coverage.calendar_days
+    (root / "reports").mkdir(exist_ok=True)
+    coverage.to_csv(root / "reports/coverage.csv")
     all_results, backtest_rows, prediction_frames, artifacts = {}, [], [], {}
     for horizon in config["horizons_days"]:
         table = features(data, horizon).dropna(subset=["target", "SOIL_MOISTURE_10_DAILY"])
@@ -130,8 +141,9 @@ def run(root: Path):
             f"Direct horizon {horizon} days · frozen model, new measurements at each origin"
         )
         ax.set_ylabel("m³/m³")
+        ax.set_xlim(pd.Timestamp(config["test_start"]), pd.Timestamp(config["test_end"]))
         ax.legend(fontsize=8, loc="upper right")
-    fig.suptitle("NOAA Iowa · future test 2023–2024 · gaps retain missing measurements")
+    fig.suptitle("NOAA Missouri · future test 2023–2024 · gaps retain missing measurements")
     fig.savefig(reports / "figures/forecast-intervals.png", dpi=150)
     plt.close(fig)
     summary = []

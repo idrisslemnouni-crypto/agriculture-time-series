@@ -1,0 +1,20 @@
+{
+  "description": "Purged 1/7-day measured soil-moisture forecasts, expanding backtests and honest historical-error intervals",
+  "topics": [
+    "agriculture",
+    "time-series",
+    "forecasting",
+    "soil-moisture",
+    "scikit-learn"
+  ],
+  "issues": [
+    {
+      "title": "Evaluate operational latency and genuinely forecast weather",
+      "body": "Current origin-day inputs are retrospective finalized observations. Measure sensor/reporting latency and compare actual weather forecasts on a new untouched period."
+    },
+    {
+      "title": "Extend external-site validation and time-block uncertainty",
+      "body": "Current forecasting evidence is one Missouri reference site with incomplete periods. Add independent sites and time-block resampling; do not retune the inspected 2023\u20132024 test."
+    }
+  ]
+}

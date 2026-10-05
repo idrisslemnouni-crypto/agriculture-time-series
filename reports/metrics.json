@@ -1,0 +1,164 @@
+{
+  "config": {
+    "seed": 42,
+    "station": "MO_Chillicothe_22_ENE",
+    "horizons_days": [
+      1,
+      7
+    ],
+    "validation_years": [
+      2021,
+      2022
+    ],
+    "test_start": "2023-01-01",
+    "test_end": "2024-12-31",
+    "interval_quantile": 0.9
+  },
+  "data": {
+    "observed_rows": 3288,
+    "stations": [
+      "MO_Chillicothe_22_ENE"
+    ],
+    "missing_fraction": {
+      "SOIL_MOISTURE_5_DAILY": 0.09184914841849148,
+      "SOIL_MOISTURE_10_DAILY": 0.07846715328467153,
+      "P_DAILY_CALC": 0.0033454987834549877,
+      "T_DAILY_AVG": 0.0036496350364963502
+    },
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "horizons": {
+    "1": {
+      "validation": {
+        "persistence": {
+          "rmse": 0.031032336215892613,
+          "mae": 0.016304860088365243,
+          "r2": 0.8828535256333667,
+          "n": 679
+        },
+        "seasonal_climatology": {
+          "rmse": 0.09521395250577021,
+          "mae": 0.07659710202441829,
+          "r2": -0.10281195790644881,
+          "n": 679
+        },
+        "ridge": {
+          "rmse": 0.027037948259085464,
+          "mae": 0.016060125173643844,
+          "r2": 0.9110701122719789,
+          "n": 679
+        },
+        "random_forest": {
+          "rmse": 0.02656311244481257,
+          "mae": 0.01534238002811889,
+          "r2": 0.9141662276090166,
+          "n": 679
+        }
+      },
+      "selected_on_validation": "random_forest",
+      "test": {
+        "persistence": {
+          "rmse": 0.023693586250539713,
+          "mae": 0.012900735294117649,
+          "r2": 0.9564672537606053,
+          "n": 544
+        },
+        "seasonal_climatology": {
+          "rmse": 0.10820399952145127,
+          "mae": 0.08535691721267012,
+          "r2": 0.09209356928405477,
+          "n": 544
+        },
+        "ridge": {
+          "rmse": 0.021242519033968628,
+          "mae": 0.013183872577735152,
+          "r2": 0.965008182812655,
+          "n": 544
+        },
+        "random_forest": {
+          "rmse": 0.021274266729560804,
+          "mae": 0.012120831642231975,
+          "r2": 0.9649035116382705,
+          "n": 544
+        }
+      },
+      "historical_error_radius": 0.036257751234538005,
+      "test_interval_coverage": 0.9301470588235294,
+      "test_interval_mean_width": 0.07251550246907601,
+      "train_rows": 2469,
+      "test_rows": 544
+    },
+    "7": {
+      "validation": {
+        "persistence": {
+          "rmse": 0.07080319799465931,
+          "mae": 0.0533302891933029,
+          "r2": 0.41036837388239844,
+          "n": 657
+        },
+        "seasonal_climatology": {
+          "rmse": 0.09547130325667974,
+          "mae": 0.0763024363087521,
+          "r2": -0.07206402744795182,
+          "n": 657
+        },
+        "ridge": {
+          "rmse": 0.06431610490743594,
+          "mae": 0.05361163646366686,
+          "r2": 0.5134645476546846,
+          "n": 657
+        },
+        "random_forest": {
+          "rmse": 0.07134220391025888,
+          "mae": 0.056994022663288894,
+          "r2": 0.40135678503265804,
+          "n": 657
+        }
+      },
+      "selected_on_validation": "ridge",
+      "test": {
+        "persistence": {
+          "rmse": 0.06155618193028696,
+          "mae": 0.04475751879699249,
+          "r2": 0.702231501615142,
+          "n": 532
+        },
+        "seasonal_climatology": {
+          "rmse": 0.10922968999231411,
+          "mae": 0.08652140438204561,
+          "r2": 0.06240171586114829,
+          "n": 532
+        },
+        "ridge": {
+          "rmse": 0.060106672779532654,
+          "mae": 0.04982126068379337,
+          "r2": 0.7160899422478775,
+          "n": 532
+        },
+        "random_forest": {
+          "rmse": 0.06653613696057262,
+          "mae": 0.055298509037525076,
+          "r2": 0.6521030938068474,
+          "n": 532
+        }
+      },
+      "historical_error_radius": 0.10112875109566216,
+      "test_interval_coverage": 0.9492481203007519,
+      "test_interval_mean_width": 0.20225750219132438,
+      "train_rows": 2438,
+      "test_rows": 532
+    }
+  },
+  "interval_caveat": "Historical residual intervals; serial dependence and drift mean nominal coverage is not guaranteed",
+  "model_sha256": "ab38a38dede73374d976f816df6a829c236c9a08aeda11c2e6f9dffec980cf80"
+}
