@@ -1,0 +1,15 @@
+{
+  "seed": 42,
+  "station": "IA_Des_Moines_17_E",
+  "horizons_days": [
+    1,
+    7
+  ],
+  "validation_years": [
+    2021,
+    2022
+  ],
+  "test_start": "2023-01-01",
+  "test_end": "2024-12-31",
+  "interval_quantile": 0.9
+}

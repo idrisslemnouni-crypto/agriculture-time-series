@@ -1,0 +1,7 @@
+# Design — Direct multi-horizon soil moisture forecasting
+
+Real daily NOAA Iowa reference-station soil moisture at 10 cm, 2016–2024. Unlike the screening classifier, this question predicts continuous moisture at horizons 1 and 7 days. A calendar-aligned origin t has only historical measurements available through t. No future weather, target imputation, random temporal split or sequential open-loop prediction claim.
+
+Expanding validation origins in 2021 and 2022, fitting only target dates before each fold begins (purge h-day boundary). Compare persistence, smoothed day-of-year climatology, train-scaled Ridge and Random Forest with fixed hyperparameters. Select each horizon by pooled validation RMSE, then refit on targets through 2022 and evaluate frozen models on 2023–2024 daily origins. Retrospective measurements may be revised; operational latency is unverified.
+
+Construct historical-error intervals from validation residuals of the selected method, with a finite-sample 90% quantile. Report test coverage/width as observed diagnostics. Serial dependence/drift violates exchangeability: no distribution-free conformal guarantee is claimed. Deep learning is omitted because sample size is small and persistence is a demanding baseline. Save models, baseline definitions, per-day forecasts, backtest metrics, uncertainty and missingness evidence; real tests and reproduction precede daily publication.
