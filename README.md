@@ -65,9 +65,13 @@ The first run downloads nine small NOAA text files; hashes fail explicitly if th
 
 One location, shallow moisture, selective missingness, retrospective finalized weather, serially correlated overlapping horizons and wide longer-horizon intervals. No independent-site generalization, actual irrigation decision or crop water-saving effect is measured. Add independent sites, report block-resampled uncertainty, measure operational reporting latency and compare genuine weather forecasts on a new untouched period before advancing this prototype.
 
-Developed with AI assistance. All numbers come from executed source data. Daily publication and remote CI verification remain pending.
+Developed with AI assistance. All numbers come from executed source data. Remote CI evidence is linked below; it checks software contracts and stored notebook structure, without independently validating forecast performance.
 
 
 ## GitHub publication
 
 [Public repository](https://github.com/idrisslemnouni-crypto/agriculture-time-series) · [Current CI results](https://github.com/idrisslemnouni-crypto/agriculture-time-series/actions). Published following the user's explicit 5 October 2026 request to release the prepared portfolio together. Earlier local-verification notes describe the pre-publication checkpoint. Raw sources and trained artifacts remain excluded from Git; reproduction commands regenerate them.
+
+## Calendar contract update — 6 October 2026
+
+Forecast features reject missing or blank station identifiers, missing dates, non-datetime dates, intraday timestamps, duplicate dates and gaps. A positive, nonboolean integer horizon therefore maps an observation to an exact future calendar day; missing observations remain missing targets. The cached NOAA one-day and seven-day feature tables reproduce their previous hashes exactly. Existing models, evaluated predictions and scores are retained; this input-contract correction does not create a new independent test.

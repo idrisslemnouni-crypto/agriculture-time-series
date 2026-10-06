@@ -67,8 +67,18 @@ def read_sources(root: Path) -> tuple[pd.DataFrame, dict]:
 
 
 def features(frame: pd.DataFrame, horizon: int = 1) -> pd.DataFrame:
-    if not isinstance(horizon, int) or horizon < 1:
+    if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon < 1:
         raise ValueError("Positive integer forecast horizon required")
+    if frame.empty:
+        raise ValueError("A nonempty daily calendar is required")
+    if (
+        frame.station.isna().any()
+        or frame.station.astype(str).str.strip().eq("").any()
+        or not pd.api.types.is_datetime64_any_dtype(frame.date)
+        or frame.date.isna().any()
+        or not frame.date.eq(frame.date.dt.normalize()).all()
+    ):
+        raise ValueError("Nonmissing station identifiers and daily calendar dates are required")
     groups = []
     for _station, group in frame.groupby("station"):
         group = group.sort_values("date").copy()
